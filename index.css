@@ -1,2 +1,13 @@
 @import "tailwindcss";
 
+a.active {
+  color: red;
+}
+
+a.pending {
+  animate: pulse 1s infinite;
+}
+
+a.transitioning {
+  /* css transition is running */
+}

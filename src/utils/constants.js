@@ -10,3 +10,12 @@ export const FOODFIRE_API_URL = `${process.env.REACT_FOODFIRE_APP_BASE_URL}resta
 
 // Swiggy API to get Restaurant Menu data using foodfire server
 export const FOODFIRE_MENU_API_URL = `${process.env.REACT_FOODFIRE_APP_BASE_URL}menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=`;
+export const MENU_API =
+  "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=";
+
+// https://pastebin.com/raw/0QcdEDBL
+// https://swiggy-api-4c740.web.app/swiggy-api.json
+// https://raw.githubusercontent.com/namastedev/namaste-react/refs/heads/main/swiggy-api
+
+// REACT_MEDIA_ASSETS_BASE_URL = "https://media-assets.swiggy.com/swiggy/"
+// REACT_FOODFIRE_APP_BASE_URL = "https://foodfire.onrender.com/api/"
