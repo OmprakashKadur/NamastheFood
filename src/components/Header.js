@@ -1,19 +1,18 @@
 import React, { useEffect, useState, useContext } from "react";
-import { NavLink } from "react-router";
+import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/userContext";
-import {useSelector} from "react-redux"
+import { useSelector } from "react-redux";
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
-  const {loggedInUser} = useContext(UserContext);
+  const { loggedInUser } = useContext(UserContext);
 
   //subscribing to the store using Selector
-  const cartItems = useSelector((store)=> store.cart.items)
+  const cartItems = useSelector((store) => store.cart.items);
 
-console.log(cartItems)
   const handleLogin = () => {
     btnNameReact === "Login"
-      ? setBtnNameReact("LogOut")
+      ? setBtnNameReact("Logout")
       : setBtnNameReact("Login");
   };
   const onlineStatus = useOnlineStatus();
@@ -29,19 +28,11 @@ console.log(cartItems)
       </div>
       <nav className="flex gap-4 p-2 m-2">
         <div>Online Status: {onlineStatus ? "🟢" : "🔴"}</div>
-        <NavLink to="/" end>
-          Home
-        </NavLink>
-        <NavLink to="/grocery" end>
-          Grocery
-        </NavLink>
-        <NavLink to="/about" end>
-          About
-        </NavLink>
-        <NavLink to="/contact" end>
-          Contact
-        </NavLink>
-       <NavLink to="/cart">Cart - ({cartItems.length} items)</NavLink>
+        <Link to="/">Home</Link>
+        <Link to="/grocery">Grocery</Link>
+        <Link to="/about">About</Link>
+        <Link to="/contact">Contact</Link>
+        <Link to="/cart">Cart - ({cartItems.length} items)</Link>
         <button
           className="bg-blue-500 text-white px-4 py-1 rounded curser-pointer"
           onClick={handleLogin}

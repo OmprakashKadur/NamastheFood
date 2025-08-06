@@ -6,6 +6,8 @@ import {
 } from "../utils/constants";
 
 const RestaurantCard = ({ restaurantData }) => {
+  // console.log(restaurantData);
+
   const {
     name,
     avgRating,
@@ -17,6 +19,7 @@ const RestaurantCard = ({ restaurantData }) => {
   } = restaurantData;
   return (
     <div
+      data-testid="resCard"
       className="p-2 h-[300px] w-[205px] bg-gray-200 shadow-md rounded-lg  hover:border border-gray-50 hover:cursor-pointer hover:bg-gray-500"
     >
       <img className=" rounded-lg" src={IMG_CDN_URL + cloudinaryImageId} />
@@ -43,16 +46,16 @@ const RestaurantCard = ({ restaurantData }) => {
   );
 };
 
-export const withPromotedLabel =(RestaurantCard)=>{
-  return (props)=>{
+export const WithPromotedLabel = (RestaurantCard) => {
+  return (props) => {
     return (
       <div>
         <label className="absolute bg-black text-white m-2 p-2 rounded-lg">
           Promoted
         </label>
-        <RestaurantCard {...props}/>
+        <RestaurantCard {...props} />
       </div>
-    )
-  }
-}
+    );
+  };
+};
 export default RestaurantCard;

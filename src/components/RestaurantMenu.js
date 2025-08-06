@@ -1,24 +1,16 @@
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { MENU_API } from "../utils/constants";
+import  useRestaurantMenu  from "../utils/useRestrauntMenu"
 import Shimmer from "./Shimmer";
 import RestaurantCategory from "./RestaurantCategory";
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
   const { resId } = useParams();
   const [showIndex, setShowIndex] = useState(null);
-  const dummy = "Dummy data"
-  useEffect(() => {
-    fetchMenu();
-  }, []);
+  const dummy = "Dummy data";
 
-  const fetchMenu = async () => {
-    const data = await fetch(MENU_API + resId);
-    const json = await data.json();
 
-    setResInfo(json.data);
-  };
-
+  const resInfo = useRestaurantMenu(resId);
+  console.log(resInfo)
   if (!resInfo) {
     return <Shimmer />;
   }
@@ -40,9 +32,9 @@ const RestaurantMenu = () => {
     <div className="text-center">
       <h1 className="font-bold my-6 text-2xl">{name}</h1>
       <p className="font-bold text-lg">
-        {cuisines.join(", ")} - {costForTwoMessage}
+        {cuisines?.join(", ")} - {costForTwoMessage}
       </p>
-      {categories.map((category, index) => (
+      {categories?.map((category, index) => (
         <RestaurantCategory
           key={category?.card?.card.title}
           data={category?.card?.card}

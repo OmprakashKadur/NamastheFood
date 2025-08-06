@@ -2,6 +2,19 @@ import { render, screen } from "@testing-library/react";
 import Contact from "../Contact";
 import "@testing-library/jest-dom";
 
+// beforeAll(()=>{
+//   console.log("before All Test")
+// })
+// beforeEach(()=>{
+//   console.log("before Each Test")
+// })
+// afterAll(()=>{
+//   console.log("After All Test")
+// })
+// afterEach(()=>{
+//   console.log("After Each Test")
+// })
+
 describe("Contact Component", () => {
   test("should load contact us component", () => {
     render(<Contact />);
@@ -22,12 +35,12 @@ describe("Contact Component", () => {
 });
 
 describe("Contact Input", () => {
-  test("should load input Name inside Contant Component", () => {
+  it("should load input Name inside Contant Component", () => {
     render(<Contact />);
     const nameInput = screen.getByPlaceholderText("Name");
     expect(nameInput).toBeInTheDocument();
   });
-  test("should load 2 input boxes Contant Component", () => {
+  it("should load 2 input boxes Contant Component", () => {
     render(<Contact />);
     const inputBoxes = screen.getAllByRole("textbox");
     expect(inputBoxes.length).toBe(2);
